@@ -10,7 +10,7 @@ public class ReadThread  extends Thread{
     private BufferedReader reader;
     private Socket socket;
     private ChatClient client;
-    private ChatEncryption encrypt=new ChatEncryption();
+    private ChatEncryption encryption=new ChatEncryption();
 
     public ReadThread(Socket socket,ChatClient client){
         this.socket=socket;
@@ -20,8 +20,7 @@ public class ReadThread  extends Thread{
             InputStream input=socket.getInputStream();
             reader=new BufferedReader(new InputStreamReader(input));
         } catch (IOException e) {
-            System.out.println("Error occured : "+ e.getMessage());
-            e.printStackTrace();
+            System.out.println("Client Socket closed ...");
         }
     }
 
@@ -30,13 +29,16 @@ public class ReadThread  extends Thread{
         while(true){
             try {
                 String response=reader.readLine();
-                System.out.println("\n"+response);
+                String[] reply=response.split(":");
+                if(reply.length == 2)
+                    System.out.println("\n"+ reply[0]+ ":"+encryption.decrypt(reply[1]));
+                else
+                    System.out.println("\n"+response);
 
                 if(client.getUsername()!=null)
                     System.out.println(client.getUsername()+ " : ");
             } catch (IOException e) {
-                System.out.println("Error occured : "+ e.getMessage());
-                e.printStackTrace();
+                System.out.println("Client left....");
                 break;
             }
         }

@@ -35,13 +35,13 @@ public class WriteThread extends Thread{
         String text;
         do{
             text=console.readLine(username + " : ");
-            writer.println(text);
+            writer.println(encryption.encrypt(text));
         }while(!text.equals("bye"));
         try {
             socket.close();
         } catch (IOException e) {
-            System.out.println("Error occured "+ e.getMessage());
-            e.printStackTrace();
+            System.out.println("Client left ...");
+            // e.printStackTrace();
         }
     }
 }

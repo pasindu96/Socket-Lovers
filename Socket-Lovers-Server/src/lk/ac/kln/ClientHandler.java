@@ -24,7 +24,7 @@ public class ClientHandler extends Thread{
             String username=reader.readLine();
             server.addUserName(username);
 
-            String serverMessage="New User connected : "+username;
+            String serverMessage="New User connected -> "+username;
             //Should broadcast to other uses when a new user connected to the server
             server.broadcast(serverMessage,this);
 
@@ -42,8 +42,8 @@ public class ClientHandler extends Thread{
             server.broadcast(serverMessage,this);
 
         } catch (IOException e) {
-            System.out.println("Error in UserThread: " + e.getMessage());
-            e.printStackTrace();
+//            System.out.println("Error in UserThread: " + e.getMessage());
+//            e.printStackTrace();
         }
     }
     void sendMessage(String message){

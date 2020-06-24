@@ -33,7 +33,7 @@ public class ChatServer {
                 newUser.start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     //Get all the username of clients

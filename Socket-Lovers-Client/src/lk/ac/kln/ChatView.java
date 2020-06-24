@@ -10,16 +10,24 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ChatView extends JFrame{
-    private String username;
+    public String username;
     private JTextField txtMessage;
     private JButton btnSend;
     private JPanel panelMain;
     private JTextArea txtChatArea;
+    private JTextField txtName;
 
     public ChatView() {
+
+        username=JOptionPane.showInputDialog("Enter your username : ");
+        txtName.setEditable(false);
+        txtName.setText(username);
+
         btnSend.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("Check");
             }
         });
@@ -33,7 +41,7 @@ public class ChatView extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        //frame.executeClient();
+//        frame.executeClient();
     }
 
 //    public String getUsername() {

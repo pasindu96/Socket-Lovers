@@ -31,9 +31,9 @@ public class ChatClient {
             new WriteThread(socket,this).start();
 
         } catch(UnknownHostException e){
-            e.printStackTrace();
+            System.out.println("Server has stopped ! ");
         }catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
