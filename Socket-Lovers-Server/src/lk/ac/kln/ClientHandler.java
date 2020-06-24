@@ -24,7 +24,7 @@ public class ClientHandler extends Thread{
             String username=reader.readLine();
             server.addUserName(username);
 
-            String serverMessage="New User connected -> "+username;
+            String serverMessage="New User connected -> "+username + "[ Type 'bye' to end the chat... ]";
             //Should broadcast to other uses when a new user connected to the server
             server.broadcast(serverMessage,this);
 

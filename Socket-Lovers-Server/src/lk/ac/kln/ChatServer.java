@@ -47,9 +47,9 @@ public class ChatServer {
     }
 
     //Once a client send a message it should broadcast every client in the system
-    void broadcast(String message, ClientHandler excludeUser) {
+    void broadcast(String message, ClientHandler users) {
         for (ClientHandler aUser : clientThreads) {
-            if (aUser != excludeUser) {
+            if (aUser != users) {
                 aUser.sendMessage(message);
             }
         }
